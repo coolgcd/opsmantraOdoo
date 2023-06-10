@@ -5,7 +5,7 @@
         <field name="groups_id" eval="[(4,ref('base.group_no_one'))]"/>
     </record>
 
-<!--    in Action-->
+<!--    in Action menu-->
     <record id="base.open_module_tree" model="ir.actions.act_window">
         <field name="domain">['!', ('name', '=like', 'theme_%'),('to_buy','=',False)]</field>
     </record>
