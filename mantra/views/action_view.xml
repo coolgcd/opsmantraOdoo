@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <odoo>
+    <!--    On debug mode only Apps menu will be visible-->
     <record id="base.menu_management" model="ir.ui.menu">
         <field name="groups_id" eval="[(4,ref('base.group_no_one'))]"/>
     </record>
 
-<!--    in Action menu-->
+    <!--    On debug mode only Setting apps will be visible-->
+    <record model="ir.ui.menu" id="base.menu_administration">
+        <field name="groups_id" eval="[Command.set([ref('base.group_no_one')])]"/>
+    </record>
+
+    <!--    New User Custom Menu only visible on Admin/acces right -->
+    <menuitem action="base.action_res_users" id="menu_action_res_users_custom" groups="base.group_erp_manager"
+              sequence="499"/>
+
+    <!--    This domain is used to remove the module which are for purchase-->
     <record id="base.open_module_tree" model="ir.actions.act_window">
         <field name="domain">['!', ('name', '=like', 'theme_%'),('to_buy','=',False)]</field>
     </record>
